@@ -6,6 +6,7 @@ register_matplotlib_converters()
 
 # Import data (Make sure to parse dates. Consider setting index column to 'date'.)
 df = pd.read_csv("fcc-forum-pageviews.csv", parse_dates = ['date'], index_col = 'date')
+#parse_date used from pandas.read_csv documentation, index set to date
 
 
 # Clean data
@@ -55,7 +56,7 @@ def draw_box_plot():
     # Draw box plots (using Seaborn)
     df_box['month_n'] = df_box['date'].dt.month #adds a column for the month number for the month (jan = 1)
     df_box =df_box.sort_values("month_n") #sorts them from 1-12
-    fig , axes = plt.subplots(nrows =1, ncols=2, figsize=(15,6))
+    fig , axes = plt.subplots(nrows =1, ncols=2, figsize=(15,6)) #creating two plots side by side from Matplotlib documentation
     axes[0] = sns.boxplot(x=df_box['year'], y=df_box['value'], ax=axes[0])
     axes[1] = sns.boxplot(x=df_box['month'], y=df_box['value'], ax=axes[1])
 
